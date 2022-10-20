@@ -31,5 +31,15 @@ public class Main {
 
         //exercises_i.aufgabe13(999999999);
 
+        /*//Aufgabe 14
+        Exercises_I.Aufgabe14 vw_golf = new Exercises_I.Aufgabe14("VW Golf", 210.6, 150.3, 5, true);
+        vw_golf.anzeigen();
+        vw_golf.ausleihbar();
+        vw_golf.ausleihen();*/
+
+        //exercises_i.aufgabe15(1800);
+
+        Exercises_I.Aufgabe16 aufgabe16 = new Exercises_I.Aufgabe16(100000,5,1000, 2010, 1);
+        aufgabe16.info();
     }
 }

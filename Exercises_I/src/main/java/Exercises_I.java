@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Exercises_I {
@@ -236,25 +238,104 @@ public class Exercises_I {
         );
     }
 
-    public void aufgabe14(){
-        class Auto{
-            String typ;
-            double maxGeschw;
-            double PS;
-            int anzahlSitze;
-            boolean verfügbar;
+    //Aufgabe 14 Class
+    static class Aufgabe14 {
+        String typ;
+        double maxGeschw;
+        double PS;
+        int anzahlSitze;
+        boolean verfuegbar;
 
-            public Auto(String typ, double maxGeschw, double PS, int anzahlSitze, boolean verfügbar) {
-                this.typ = typ;
-                this.maxGeschw = maxGeschw;
-                this.PS = PS;
-                this.anzahlSitze = anzahlSitze;
-                this.verfügbar = verfügbar;
+        public Aufgabe14(String typ, double maxGeschw, double PS, int anzahlSitze, boolean verfuegbar) {
+            this.typ = typ;
+            this.maxGeschw = maxGeschw;
+            this.PS = PS;
+            this.anzahlSitze = anzahlSitze;
+            this.verfuegbar = verfuegbar;
+        }
+
+        public void anzeigen(){
+            System.out.println("Typ:\t" + typ);
+            System.out.println("Höchstgeschwindigkeit:\t" + maxGeschw + " km/h");
+            System.out.println("PS:\t" + PS);
+            System.out.println("Anzahl Sitze:\t" + anzahlSitze);
+            System.out.println("Ist Verfügbar?\t" + verfuegbar);
+        }
+
+        public void ausleihbar(){
+            if(verfuegbar == true){
+                System.out.println("Dieses Auto ist ausleihbar.");
+                return;
             }
+            System.out.println("Dieses Auto ist nicht ausleibar.");
+        }
 
-            public void anzeigen(){
-
+        public void ausleihen(){
+            if(verfuegbar == false){
+                System.out.println("Fehler: dieses Auto ist nicht ausleihbar.");
+                return;
             }
+            System.out.println("Auto wurde ausgeliehen!");
+            verfuegbar = false;
         }
     }
+
+    public void aufgabe15(int jahreszahl){
+        if((jahreszahl % 4 == 0) && (jahreszahl % 100 != 0)){
+            System.out.println("Ist Schaltjahr");
+            return;
+        }
+        if(jahreszahl %400 == 0){
+            System.out.println("Ist Schaltjahr");
+            return;
+        }
+        System.out.println("Kein Schaltjahr");
+    }
+
+    public static class Aufgabe16{
+        double kredithoehe, zinssatz, mtlRate, zinsen, tilgung,jahreszahl, laufzeit;
+
+        public Aufgabe16(double kredithoehe, double zinssatz, double mtlRate, double jahreszahl, double laufzeit) {
+            this.kredithoehe = kredithoehe;
+            this.zinssatz = zinssatz;
+            this.mtlRate = mtlRate;
+            this.jahreszahl = jahreszahl;
+            this.laufzeit = laufzeit;
+            double tilgung = mtlRate * 12 * jahreszahl;
+            double startjahr = jahreszahl;
+            double zinsen = neuerZins();
+        }
+
+        public void info(){
+            System.out.println("Es fallen für das Jahr " + jahreszahl + " " + zinsen + "€ Zinsen an.\n" +
+                    "Gezahlt werden " + tilgung + "€ (je " + mtlRate + "€ in 12 Monaten),\n" +
+                    "d. h. der Stand des Darlehns am 31.12." + (jahreszahl+1) + " beträgt " + neuerStand() + "€.");
+
+            System.out.println("Für das Folgejahr beträgt die Darlehnssumme dann nur noch " + neuerStandLoop(1) + "€ und damit sind\n" +
+                    "nur noch " + neuerZins() + "€ an Zinsen zu zahlen. Da aber nach wie vor 12000€ eingezahlt\n" +
+                    "werden, beträgt die Darlehnssumme nach Ablauf des Folgejahres noch "+(kredithoehe + zinsen - tilgung)+"€.");
+        }
+
+        public double aufgabe16_neueZinsen(double kredithoehe, double zinssatz){
+            return kredithoehe *zinssatz/100;
+        }
+
+        public double neuerStand(){
+            kredithoehe = kredithoehe + zinsen - mtlRate*12;
+            return kredithoehe;
+        }
+
+        public double neuerStandLoop(int jahre){
+            double temp = kredithoehe;
+            for (int i = 0; i <= jahre; i++)
+            temp += neuerStand();
+            return temp;
+        }
+
+        public double neuerZins(){
+            zinsen = (kredithoehe * zinssatz)/100;
+            return zinsen;
+        }
+    }
+
 }
