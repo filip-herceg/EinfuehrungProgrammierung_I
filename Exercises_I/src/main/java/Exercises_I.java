@@ -9,16 +9,15 @@ public class Exercises_I {
         int schock = n / 60;
         n %= 60;
         int dutzend = n / 12;
-        int stueck = n %= 12;
+        int stueck = n % 12;
 
-        int[] result = {
+        return new int[]{
                 root,
                 gros,
                 schock,
                 dutzend,
                 stueck
         };
-        return result;
     }
     public void printaufgabe2(int n) {
         int[] converted = aufgabe2(n);
@@ -48,7 +47,7 @@ public class Exercises_I {
     }
 
     public int aufgabe5(int num1, int num2, int num3) {
-        ArrayList< Integer > nums = new ArrayList < Integer > ();
+        ArrayList< Integer > nums = new ArrayList<>();
         nums.add(num1);
         nums.add(num2);
         nums.add(num3);
@@ -58,7 +57,7 @@ public class Exercises_I {
     }
 
     public int aufgabe5(int[] nums) {
-        ArrayList < Integer > numsList = new ArrayList < Integer > ();
+        ArrayList < Integer > numsList = new ArrayList<>();
         for (int x: nums) {
             numsList.add(x);
         }
@@ -88,12 +87,12 @@ public class Exercises_I {
 
     public int aufgabe8() {
         Random random = new Random();
-        ArrayList < Integer > wurf = new ArrayList < Integer > ();
+        ArrayList < Integer > wurf = new ArrayList<>();
         wurf.add(random.nextInt(1, 6));
         wurf.add(random.nextInt(1, 6));
         Comparator< Object > reverseComparator = Collections.reverseOrder();
-        Collections.sort(wurf, reverseComparator);
-        int result = 0;
+        wurf.sort(reverseComparator);
+        int result;
 
         if (wurf.get(0) == 2 && wurf.get(1) == 1) {
             return 1000;
@@ -101,7 +100,7 @@ public class Exercises_I {
 
         result = wurf.get(0) * 10 + wurf.get(1);
 
-        if (wurf.get(0) == wurf.get(1)) {
+        if (Objects.equals(wurf.get(0), wurf.get(1))) {
             result = wurf.get(0) * 100;
         }
         System.out.println(
@@ -112,7 +111,7 @@ public class Exercises_I {
 
     public void aufgabe9() { //BETTER SOLUTION: AVOID ARRAYLIST, USELESS STEP
         //Generate code. ArrayList.
-        ArrayList < int[] > list = new ArrayList < int[] > ();
+        ArrayList < int[] > list = new ArrayList<>();
 
         //Generate number and add to list
         for (int i = 0; i < 1000; i++) {
@@ -152,7 +151,7 @@ public class Exercises_I {
     public void aufgabe10() {
         //Generate data
         Random random = new Random();
-        HashMap< Integer, Integer > map = new HashMap < Integer, Integer > ();
+        HashMap< Integer, Integer > map = new HashMap<>();
         for (int i = 1; i <= 6; i++) {
             map.put(i, 0);
         }
@@ -162,13 +161,9 @@ public class Exercises_I {
 
         //Generate Diagram
         for (int i = 1; i <= 6; i++) {
-            String stars = new String();
-            for (int k = 0; k < map.get(i) / 10; k++) {
-                stars += '*';
-            }
 
             System.out.println(
-                    i + "| " + stars
+                    i + "| " + "*".repeat(Math.max(0, map.get(i) / 10))
             );
         }
     }
@@ -195,18 +190,13 @@ public class Exercises_I {
         }
 
         //Get the digits
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Integer> list = new ArrayList<>();
 
         list.add(num % 10); //add first
 
         if(num/10 % 10 != list.get(0)) list.add(num/10 % 10); //add second
 
-        if(list.size() == 3) {
-            if(num/100 % 10 != (list.get(0) | list.get(1))) list.add(num/100 % 10); //add third
-        }
-        else {
-            if(num/100 % 10 != list.get(0)) list.add(num/100 % 10); //add third
-        }
+        if(num/100 % 10 != list.get(0)) list.add(num/100 % 10); //add third
 
 
         list.removeIf(number -> number == 0);
@@ -223,7 +213,7 @@ public class Exercises_I {
             System.out.println("Nummer "+ num +" ist durch keine Ziffer teilbar.");
         }
         else {
-            System.out.println("Nummer "+ num +" ist teilbar durch " + list.toString() + ".");
+            System.out.println("Nummer "+ num +" ist teilbar durch " + list + ".");
         }
     }
 
