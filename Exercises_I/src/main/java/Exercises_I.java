@@ -235,4 +235,26 @@ public class Exercises_I {
                         jahre+"\tJahre\n"
         );
     }
+
+    public void aufgabe14(){
+        class Auto{
+            String typ;
+            double maxGeschw;
+            double PS;
+            int anzahlSitze;
+            boolean verfügbar;
+
+            public Auto(String typ, double maxGeschw, double PS, int anzahlSitze, boolean verfügbar) {
+                this.typ = typ;
+                this.maxGeschw = maxGeschw;
+                this.PS = PS;
+                this.anzahlSitze = anzahlSitze;
+                this.verfügbar = verfügbar;
+            }
+
+            public void anzeigen(){
+
+            }
+        }
+    }
 }
