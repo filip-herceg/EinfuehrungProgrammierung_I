@@ -1,5 +1,7 @@
+import java.text.ParseException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         // TODO Auto-generated method stub
         Exercises_I exercises_i = new Exercises_I();
 
@@ -39,7 +41,11 @@ public class Main {
 
         //exercises_i.aufgabe15(1800);
 
+        /*
         Exercises_I.Aufgabe16 aufgabe16 = new Exercises_I.Aufgabe16(100000,5,1000, 2010, 1);
         aufgabe16.info();
+        */
+
+        exercises_i.aufgabe17(31,12);
     }
 }

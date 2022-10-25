@@ -1,5 +1,4 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Exercises_I {
@@ -338,4 +337,22 @@ public class Exercises_I {
         }
     }
 
+    public void aufgabe17(int day, int month){
+        int gesT = day + (month-1)*30;
+        if(month > 3){
+            gesT -= 1;
+        }
+        System.out.println((gesT));
+    }
+
+    public void aufgabe18(int gesZahl){
+        HashMap<Integer, ArrayList> integerHashMap = new HashMap<>();
+        boolean done = false;
+        while(done == false){
+            for (int i = 0; i < 6; i++) {
+
+
+            }
+        }
+    }
 }
