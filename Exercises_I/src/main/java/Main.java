@@ -49,6 +49,7 @@ public class Main {
         //exercises_i.aufgabe17(31,12);
         //exercises_i.aufgabe17_loesung(31,12);
 
-        exercises_i.aufgabe18(3);
+        //exercises_i.aufgabe18(3);
+        exercises_i.aufgabe18_loesung(20);
     }
 }
