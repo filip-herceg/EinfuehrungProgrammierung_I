@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Exercises_I {
@@ -340,19 +339,74 @@ public class Exercises_I {
     public void aufgabe17(int day, int month){
         int gesT = day + (month-1)*30;
         if(month > 3){
-            gesT -= 1;
+            gesT -= 2;
         }
         System.out.println((gesT));
     }
 
-    public void aufgabe18(int gesZahl){
-        HashMap<Integer, ArrayList> integerHashMap = new HashMap<>();
-        boolean done = false;
-        while(done == false){
-            for (int i = 0; i < 6; i++) {
-
-
+    public void aufgabe17_loesung(int day, int month){
+        int sum = day;
+        for (int i = 1; i < month; i++) {
+            switch (i){
+                case 1:
+                    sum += 31;
+                    break;
+                case 2:
+                    sum += 28;
+                    break;
+                case 3:
+                    sum += 31;
+                    break;
+                case 4:
+                    sum += 30;
+                    break;
+                case 5:
+                    sum += 31;
+                    break;
+                case 6:
+                    sum += 30;
+                    break;
+                case 7:
+                    sum += 31;
+                    break;
+                case 8:
+                    sum += 31;
+                    break;
+                case 9:
+                    sum += 30;
+                    break;
+                case 10:
+                    sum += 31;
+                    break;
+                case 11:
+                    sum += 30;
+                    break;
+                case 12:
+                    sum += 31;
+                    break;
             }
         }
+        System.out.println(sum);
+    }
+
+    public void aufgabe18(int gesZahl){
+        int[] dice = new int[4];
+        dice = new int[]{1, 1, 1, 1};
+        ArrayList<int[]> result = func18_cycleUp(0, dice);
+        System.out.println(result);
+    }
+    private ArrayList<int[]> func18_cycleUp(int welcherWuerfel, int[] wuerfelSet){
+        ArrayList<int[]> result = new ArrayList();
+        while(wuerfelSet[welcherWuerfel] <7){   //von 1-6 fuehre aus
+            result.add(wuerfelSet);         //Resultatwurf in result schreiben
+            wuerfelSet[welcherWuerfel]++;   //Augenzahl erhoehen
+
+            if((wuerfelSet.length-1) > (wuerfelSet[welcherWuerfel])){   //Wenn nicht letzte zahl, gehe zur nächsten
+                wuerfelSet[welcherWuerfel+1] = 1;           //Setze nachfolgenden Würfel wieder auf 1
+                func18_cycleUp(welcherWuerfel+1, wuerfelSet); //Wiederhole programm mit nächstem Wuerfel
+            }
+        }
+        return result; //gebe resultat zurück
     }
 }
+

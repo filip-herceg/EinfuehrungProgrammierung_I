@@ -2,8 +2,8 @@ import java.text.ParseException;
 
 public class Main {
     public static void main(String[] args) throws ParseException {
-        // TODO Auto-generated method stub
         Exercises_I exercises_i = new Exercises_I();
+        TestingStuff testingStuff = new TestingStuff();
 
         //exercises_i.printaufgabe2(278);
 
@@ -46,6 +46,9 @@ public class Main {
         aufgabe16.info();
         */
 
-        exercises_i.aufgabe17(31,12);
+        //exercises_i.aufgabe17(31,12);
+        //exercises_i.aufgabe17_loesung(31,12);
+
+        exercises_i.aufgabe18(3);
     }
 }
